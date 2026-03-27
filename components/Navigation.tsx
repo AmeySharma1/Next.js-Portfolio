@@ -44,6 +44,7 @@ export default function Navigation() {
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About Me' },
     { href: '/work', label: 'Work' },
+    { href: '/resume', label: 'Resume' },
     { href: '/contact', label: 'Contact' },
   ];
 
