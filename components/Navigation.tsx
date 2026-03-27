@@ -66,11 +66,6 @@ export default function Navigation() {
               </Link>
             </li>
           ))}
-          <li>
-            <Link href="/contact" className="nav-cta" onClick={closeMobileMenu}>
-              Contact
-            </Link>
-          </li>
         </ul>
 
         <button 
