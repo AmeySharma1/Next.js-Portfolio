@@ -26,6 +26,12 @@ export default function Work() {
     document.body.style.overflow = '';
   };
 
+  // Placeholder SVG for fast initial load
+  const placeholderSVG = `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'><rect fill='%231a1a2e' width='16' height='9'/><rect x='4' y='3' width='8' height='3' rx='0.5' fill='%232a2a3e'/><circle cx='8' cy='4.5' r='1.5' fill='%238b5cf6'/></svg>`;
+
+  // Video poster placeholder (faster than images)
+  const videoPoster = `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'><rect fill='%231a1a2e' width='16' height='9'/><circle cx='8' cy='4.5' r='2' fill='%238b5cf6'/><path d='M7 3.5 L10 4.5 L7 5.5 Z' fill='white'/></svg>`;
+
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Escape') closeLightbox();
   };
@@ -89,37 +95,232 @@ export default function Work() {
             </div>
 
             <div className="work-grid">
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num, idx) => (
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num, idx) => (
                 <div key={num} className="img-card tilt-card" data-aos="fade-up" data-aos-delay={idx * 50}>
-                  <div className="img-card-thumb" style={{ aspectRatio: '16/9' }}>
-                    {num <= 8 ? (
-                      // Local videos
-                      <video 
-                        preload="metadata"
-                        src={`/video${num}.mp4`}
-                        controls
-                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                        poster={`data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'><rect fill='%231a1a2e' width='16' height='9'/><circle cx='8' cy='4.5' r='2' fill='%238b5cf6'/><path d='M7 3.5 L10 4.5 L7 5.5 Z' fill='white'/></svg>`}
-                      />
+                  <div className="img-card-thumb" style={{ aspectRatio: '16/9', position: 'relative' }}>
+                    {/* All videos from Google Drive for fast loading */}
+                    {num === 1 ? (
+                      <>
+                        {/* Fast-loading placeholder background */}
+                        <div 
+                          style={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            background: `url("${videoPoster}") center/cover no-repeat`,
+                            zIndex: -1
+                          }}
+                        />
+                        <iframe
+                          src="https://drive.google.com/file/d/1MDerYviP80_L2F285ZMff-wYimEiwoIk/preview"
+                          style={{ width: '100%', height: '100%', border: 'none', opacity: 0 }}
+                          allow="autoplay; fullscreen; picture-in-picture"
+                          allowFullScreen
+                          title="Video 1"
+                          onLoad={(e) => {
+                            e.currentTarget.style.opacity = '1';
+                          }}
+                        />
+                      </>
+                    ) : num === 2 ? (
+                      <>
+                        <div 
+                          style={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            background: `url("${videoPoster}") center/cover no-repeat`,
+                            zIndex: -1
+                          }}
+                        />
+                        <iframe
+                          src="https://drive.google.com/file/d/1S5PiEBfxSzqxuGigu-xHlcB6vyEu5UYV/preview"
+                          style={{ width: '100%', height: '100%', border: 'none', opacity: 0 }}
+                          allow="autoplay; fullscreen; picture-in-picture"
+                          allowFullScreen
+                          title="Video 2"
+                          onLoad={(e) => {
+                            e.currentTarget.style.opacity = '1';
+                          }}
+                        />
+                      </>
+                    ) : num === 3 ? (
+                      <>
+                        <div 
+                          style={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            background: `url("${videoPoster}") center/cover no-repeat`,
+                            zIndex: -1
+                          }}
+                        />
+                        <iframe
+                          src="https://drive.google.com/file/d/1jS2NXUY1S-ZFodY0MNfpmQ603SJ5obnC/preview"
+                          style={{ width: '100%', height: '100%', border: 'none', opacity: 0 }}
+                          allow="autoplay; fullscreen; picture-in-picture"
+                          allowFullScreen
+                          title="Video 3"
+                          onLoad={(e) => {
+                            e.currentTarget.style.opacity = '1';
+                          }}
+                        />
+                      </>
+                    ) : num === 4 ? (
+                      <>
+                        <div 
+                          style={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            background: `url("${videoPoster}") center/cover no-repeat`,
+                            zIndex: -1
+                          }}
+                        />
+                        <iframe
+                          src="https://drive.google.com/file/d/1lK3s9RfX3ycD4ab6focVyJdll0MbnRds/preview"
+                          style={{ width: '100%', height: '100%', border: 'none', opacity: 0 }}
+                          allow="autoplay; fullscreen; picture-in-picture"
+                          allowFullScreen
+                          title="Video 4"
+                          onLoad={(e) => {
+                            e.currentTarget.style.opacity = '1';
+                          }}
+                        />
+                      </>
+                    ) : num === 5 ? (
+                      <>
+                        <div 
+                          style={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            background: `url("${videoPoster}") center/cover no-repeat`,
+                            zIndex: -1
+                          }}
+                        />
+                        <iframe
+                          src="https://drive.google.com/file/d/1AUJXxZzZK2gnmlO00XAjQk_oy4rsRznY/preview"
+                          style={{ width: '100%', height: '100%', border: 'none', opacity: 0 }}
+                          allow="autoplay; fullscreen; picture-in-picture"
+                          allowFullScreen
+                          title="Video 5"
+                          onLoad={(e) => {
+                            e.currentTarget.style.opacity = '1';
+                          }}
+                        />
+                      </>
+                    ) : num === 6 ? (
+                      // Original Google Drive Video 1
+                      <>
+                        <div 
+                          style={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            background: `url("${videoPoster}") center/cover no-repeat`,
+                            zIndex: -1
+                          }}
+                        />
+                        <iframe
+                          src="https://drive.google.com/file/d/1q6PlbGG4sgDYgDAnrL5x5wWVK2t762YL/preview"
+                          style={{ width: '100%', height: '100%', border: 'none', opacity: 0 }}
+                          allow="autoplay; fullscreen; picture-in-picture"
+                          allowFullScreen
+                          title="Google Drive Video 1"
+                          onLoad={(e) => {
+                            e.currentTarget.style.opacity = '1';
+                          }}
+                        />
+                      </>
+                    ) : num === 7 ? (
+                      // Original Google Drive Video 2
+                      <>
+                        <div 
+                          style={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            background: `url("${videoPoster}") center/cover no-repeat`,
+                            zIndex: -1
+                          }}
+                        />
+                        <iframe
+                          src="https://drive.google.com/file/d/1QOEG6EE5yy4nFuzkB-08mmxTJk3w1Jn6/preview"
+                          style={{ width: '100%', height: '100%', border: 'none', opacity: 0 }}
+                          allow="autoplay; fullscreen; picture-in-picture"
+                          allowFullScreen
+                          title="Google Drive Video 2"
+                          onLoad={(e) => {
+                            e.currentTarget.style.opacity = '1';
+                          }}
+                        />
+                      </>
+                    ) : num === 8 ? (
+                      // Original Google Drive Video 2
+                      <>
+                        <div 
+                          style={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            background: `url("${videoPoster}") center/cover no-repeat`,
+                            zIndex: -1
+                          }}
+                        />
+                        <iframe
+                          src="https://drive.google.com/file/d/1-Yyxc2WTWJ_eeeql95JxiD-I5q6CNrUP/preview"
+                          style={{ width: '100%', height: '100%', border: 'none', opacity: 0 }}
+                          allow="autoplay; fullscreen; picture-in-picture"
+                          allowFullScreen
+                          title="Google Drive Video 2"
+                          onLoad={(e) => {
+                            e.currentTarget.style.opacity = '1';
+                          }}
+                        />
+                      </>
                     ) : num === 9 ? (
-                      // Google Drive Video 1
-                      <iframe
-                        src="https://drive.google.com/file/d/1q6PlbGG4sgDYgDAnrL5x5wWVK2t762YL/preview"
-                        style={{ width: '100%', height: '100%', border: 'none' }}
-                        allow="autoplay; fullscreen; picture-in-picture"
-                        allowFullScreen
-                        title="Google Drive Video 1"
-                      />
-                    ) : (
-                      // Google Drive Video 2
-                      <iframe
-                        src="https://drive.google.com/file/d/1-Yyxc2WTWJ_eeeql95JxiD-I5q6CNrUP/preview"
-                        style={{ width: '100%', height: '100%', border: 'none' }}
-                        allow="autoplay; fullscreen; picture-in-picture"
-                        allowFullScreen
-                        title="Google Drive Video 2"
-                      />
-                    )}
+                      // Placeholder for additional videos (using first video as placeholder)
+                      <>
+                        <div 
+                          style={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            background: `url("${videoPoster}") center/cover no-repeat`,
+                            zIndex: -1
+                          }}
+                        />
+                        <iframe
+                          src="https://drive.google.com/file/d/1st3MpPU-V6ca4XKJn2oDfeuDxAW0akJo/preview"
+                          style={{ width: '100%', height: '100%', border: 'none', opacity: 0 }}
+                          allow="autoplay; fullscreen; picture-in-picture"
+                          allowFullScreen
+                          title="Additional Video"
+                          onLoad={(e) => {
+                            e.currentTarget.style.opacity = '1';
+                          }}
+                        />
+                      </>
+                    ) : null}
                   </div>
                 </div>
               ))}
@@ -167,7 +368,30 @@ export default function Work() {
                       decoding="async" 
                       src={`/${item.src}`} 
                       alt={item.title} 
-                      loading="lazy" 
+                      loading="lazy"
+                      onLoad={(e) => {
+                        // Add loaded class for smooth fade-in
+                        e.currentTarget.style.opacity = '1';
+                      }}
+                      style={{ 
+                        width: '100%', 
+                        height: '100%', 
+                        objectFit: 'cover',
+                        opacity: 0,
+                        transition: 'opacity 0.3s ease'
+                      }}
+                    />
+                    {/* Fast-loading placeholder background */}
+                    <div 
+                      style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        background: `url("${placeholderSVG}") center/cover no-repeat`,
+                        zIndex: -1
+                      }}
                     />
                     <div className="img-card-overlay">
                       <span className="img-zoom-icon">🔍</span>
@@ -209,7 +433,29 @@ export default function Work() {
                       decoding="async" 
                       src={`/image copy ${num}.png`} 
                       alt="Logo" 
-                      loading="lazy" 
+                      loading="lazy"
+                      onLoad={(e) => {
+                        e.currentTarget.style.opacity = '1';
+                      }}
+                      style={{ 
+                        width: '100%', 
+                        height: '100%', 
+                        objectFit: 'cover',
+                        opacity: 0,
+                        transition: 'opacity 0.3s ease'
+                      }}
+                    />
+                    {/* Fast-loading placeholder background */}
+                    <div 
+                      style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        background: `url("${placeholderSVG}") center/cover no-repeat`,
+                        zIndex: -1
+                      }}
                     />
                     <div className="img-card-overlay">
                       <span className="img-zoom-icon">🔍</span>
